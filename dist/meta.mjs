@@ -1,1 +1,0 @@
-export const useMeta = () => console.warn('[bridge] [meta] To use `useMeta`, please set `bridge.meta` to `true` in your `nuxt.config`. Please see https://v3.nuxtjs.org for more information.')
