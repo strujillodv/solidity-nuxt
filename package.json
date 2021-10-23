@@ -1,0 +1,40 @@
+{
+  "name": "tasklist",
+  "version": "1.0.0",
+  "description": "Aplicación de tareas, con el uso de trufflo ganache y nuxt",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "node .output/server/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strujillodv/solidity-nuxt.git"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "truffle",
+    "solidity",
+    "ethereum",
+    "ganache"
+  ],
+  "author": "Sergio Antonio Trujillo del Valle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strujillodv/solidity-nuxt/issues"
+  },
+  "homepage": "https://github.com/strujillodv/solidity-nuxt#readme",
+  "devDependencies": {
+    "@truffle/contract": "^4.3.21"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.7.8",
+    "nuxt": "^2.15.8"
+  }
+}
