@@ -1,79 +1,23 @@
-const contract = require("@truffle/contract");
+import {truffle} from "../services/truffle"
 
 export const state = () => ({
   conection: false,
-  provider: '',
-  account: {},
-  tasksContract: {},
-  tasks: [],
-  error: {}
+  account: "0x0000000000000000000000000000000000000000",
+  tasks: []
 })
 
 export const mutations = {
-  addProvider(provider) {
+  addProvider(state, provider) {
     state.provider = provider
   },
-  addAccount(account) {
+  addAccount(state, account) {
     state.account = account
     state.conection = true
   },
-  addtasksContract(tasksContract) {
-    state.tasksContract = tasksContract
+  addtasks(state, task) {
+    state.tasks.push(task)
   },
-  addtasks(tasks) {
-    state.tasks = tasks
-  },
-  errorMessage(error) {
-    state.error = error
-  }
-}
-
-export const actions = {
-  async loadAccount ({commit}) {
-    try {
-       // Privider Ethereum
-      commit('addProvider', window.ethereum)
-      // Address Metamask
-      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
-      commit('addAccount', accounts[0])
-
-    } catch (error) {
-      commit('errorMessage', error)
-    }
-  },
-  async loadContract ({commit}) {
-    try {
-      // Data Contract Task JSON
-      const res = await fetch("/contracts/Tasks.json");
-      const tasksContractJSON = await res.json();
-
-      // Construction Contract Task
-      const MyContract = contract(tasksContractJSON)
-      MyContract.setProvider(window.ethereum)
-      const tasks = await MyContract.deployed()
-      commit('tasksContract', tasks)
-
-    } catch (error) {
-      commit('errorMessage', error)
-    }
-  },
-  async createTask ({state},task) {
-    try {
-      await state.tasksContract.createTask(task.title, task.description, {
-        from: state.account
-      })
-
-    } catch (error) {
-      commit('errorMessage', error)
-    }
-  },
-  async getTasks ({state}) {
-    try {
-      const tasks = await state.tasksContract.tasks
-      commit('addtasks', tasks)
-
-    } catch (error) {
-      commit('errorMessage', error)
-    }
+  toogleTask(state, id) {
+    state.tasks[id-1].done = !state.tasks[id-1].done
   }
 }
