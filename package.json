@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "truffle test",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --trace-warnings",
     "build": "nuxt build",
     "start": "node .output/server/index.mjs"
   },
@@ -31,7 +31,9 @@
   },
   "homepage": "https://github.com/strujillodv/solidity-nuxt#readme",
   "devDependencies": {
-    "@truffle/contract": "^4.3.21"
+    "@truffle/contract": "^4.3.21",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.8",

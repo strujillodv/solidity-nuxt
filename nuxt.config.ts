@@ -1,9 +1,6 @@
 export default {
   ssr: false,
   srcDir: 'src/',
-  router: {
-    middleware: ['ethereum'],
-  },
   head: {
     title: 'Taks ethereum',
     meta: [
